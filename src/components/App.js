@@ -2,28 +2,25 @@ import React, { useEffect, useState } from 'react';
 import '../styles/App.css';
 
 const App = () => {
-  const [isClicked, setIsClicked] = useState(false);
+  const [isClicked, setIsClicked] = useState(true);
+  const [className, setClassName] = useState('redColor');
 
   const handleClick = () => {
     setIsClicked(!isClicked);
   };
-
-  useEffect(() => {
-    const pTag = document.querySelector('#main p');
-    if (isClicked) {
-      pTag.style.color = 'blue';
-      pTag.style.fontSize = '30px';
-      pTag.style.fontStyle = 'italic';
-    } else {
-      pTag.style.color = 'red';
-      pTag.style.fontSize = '30px';
-      pTag.style.fontStyle = 'normal';
-    }
-  }, [isClicked]);
+  useEffect(()=>{
+   if(value){
+    setClassName('redColor')
+   }
+   if(!value){
+    setClassName('blueColor')
+   }
+  }, [value]);
+ 
 
   return (
     <div id="main">
-      <p className="title">Newton School</p>
+      <p className={className}>Newton School</p>
       <button id='button' onClick={handleClick}>Change Style</button>
     </div>
   );
